@@ -64,6 +64,7 @@ The goal was to build hands-on experience with the exact tool support teams use 
 
 8. **Validated the system end-to-end** — Submitted sample tickets from the public-facing portal using different help topics and priority levels, then worked them from the staff panel: assigned to an agent, added internal notes, replied to the requester, and moved each through Open → In Progress → Resolved/Closed. One ticket was deliberately left past its SLA target to see a breach from the agent's side.
 <img width="2880" height="1800" alt="image" src="https://github.com/user-attachments/assets/564530bc-f50d-4434-9a34-b5b611910c5a" />
+<img width="2846" height="4620" alt="image" src="https://github.com/user-attachments/assets/edf0bf37-325e-4021-ad92-0a9430ed247f" />
 
 
 ## What Was Configured
