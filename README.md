@@ -44,6 +44,8 @@ The goal was to build hands-on experience with the exact tool support teams use 
 3. **Created the database** — Created the `osticket` database and a dedicated `osticketuser` account scoped only to that database (`GRANT ALL PRIVILEGES ON osticket.*`), rather than using root for the application.
 4. **Deployed osTicket** — Downloaded the latest release, copied the application files into Apache's web root (`/var/www/html`), created `ost-config.php` from the sample config, and set correct `www-data` ownership/permissions.
 5. **Ran the web installer** — Completed the `/setup/` wizard in-browser: helpdesk name and system email, admin account, and database connection settings.
+<img width="2880" height="1800" alt="image" src="https://github.com/user-attachments/assets/d19e584d-815a-4bc7-ae99-920765c53606" />
+
 6. **Locked down the install** — Deleted the `/setup/` directory and reset `ost-config.php` back to read-only permissions once installation succeeded, closing the post-install security gap.
 7. **Configured the help desk** — Built out the operational structure through the staff control panel (`/scp/`):
    - 2–3 agent accounts representing support staff
