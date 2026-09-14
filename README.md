@@ -47,6 +47,8 @@ The goal was to build hands-on experience with the exact tool support teams use 
 <img width="2880" height="1800" alt="image" src="https://github.com/user-attachments/assets/d19e584d-815a-4bc7-ae99-920765c53606" />
 
 6. **Locked down the install** — Deleted the `/setup/` directory and reset `ost-config.php` back to read-only permissions once installation succeeded, closing the post-install security gap.
+<img width="1204" height="174" alt="image" src="https://github.com/user-attachments/assets/20ab3da4-9e1c-4eca-8130-340bb8625a4d" />
+
 7. **Configured the help desk** — Built out the operational structure through the staff control panel (`/scp/`):
    - 2–3 agent accounts representing support staff
    - A support team with agents assigned to it
