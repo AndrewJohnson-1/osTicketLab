@@ -56,7 +56,7 @@ The goal was to build hands-on experience with the exact tool support teams use 
    - Multiple help topics (e.g., Password Reset, Hardware Issue, Software Install Request), each routed to the correct department
    - An SLA plan (response/resolution targets) assigned to a help topic
 
-<img width="1204" height="174" alt="image" src="https://github.com/user-attachments/assets/e15142ef-547a-425a-b854-44a24b962b0d" />
+<img width="2880" height="1800" alt="image" src="https://github.com/user-attachments/assets/ed2a3b03-a0ee-4360-93b0-65bef7578bd8" />
 
 8. **Validated the system end-to-end** — Submitted sample tickets from the public-facing portal using different help topics and priority levels, then worked them from the staff panel: assigned to an agent, added internal notes, replied to the requester, and moved each through Open → In Progress → Resolved/Closed. One ticket was deliberately left past its SLA target to see a breach from the agent's side.
 
