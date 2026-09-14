@@ -40,6 +40,7 @@ The goal was to build hands-on experience with the exact tool support teams use 
 ## Build Process
 
 1. **Provisioned the VM** — Created `rg-osticket-lab` and deployed `tix-vm01` (Ubuntu Server 24.04 LTS, Standard_B2s) with inbound rules for SSH (22) and HTTP (80).
+
 2. **Installed the LAMP stack** — Updated packages, then installed Apache2, MySQL, and PHP with the extensions osTicket requires; ran `mysql_secure_installation` to harden the database server.
 3. **Created the database** — Created the `osticket` database and a dedicated `osticketuser` account scoped only to that database (`GRANT ALL PRIVILEGES ON osticket.*`), rather than using root for the application.
 4. **Deployed osTicket** — Downloaded the latest release, copied the application files into Apache's web root (`/var/www/html`), created `ost-config.php` from the sample config, and set correct `www-data` ownership/permissions.
