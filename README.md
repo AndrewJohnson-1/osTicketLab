@@ -73,13 +73,6 @@ The goal was to build hands-on experience with the exact tool support teams use 
 - The configuration file's write permissions were reverted to read-only once setup completed.
 - SSH and HTTP are the only inbound ports opened on the VM's network security group.
 
-## Screenshots
-
-_Add screenshots here to round out the portfolio:_
-- Ticket queue showing multiple open tickets
-- A full ticket conversation thread (agent reply + internal note)
-- Departments / Help Topics / SLA configuration screens
-
 ## Cleanup
 
 The VM was stopped ("Stopped (deallocated)") in the Azure Portal when not actively in use, and the `rg-osticket-lab` resource group is deleted once the project is fully documented, to ensure the lab stops billing entirely.
