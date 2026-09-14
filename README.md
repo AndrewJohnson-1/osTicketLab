@@ -14,7 +14,7 @@ The goal was to build hands-on experience with the exact tool support teams use 
 |---|---|
 | Cloud platform | Microsoft Azure |
 | Resource group | `rg-osticket-lab` |
-| VM | `tix-vm01` — Standard_B2s |
+| VM | `tix-vm01` — Standard_D2s |
 | OS | Ubuntu Server 24.04 LTS |
 | Web server | Apache2 |
 | Database | MySQL |
