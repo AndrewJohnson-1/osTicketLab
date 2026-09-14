@@ -24,6 +24,13 @@ The goal was to build hands-on experience with the exact tool support teams use 
 | Web access | HTTP (port 80) for the ticketing portal and staff panel |
 
 **Architecture:**
+[ Your machine ]
+|
+| SSH (22) ──────────────► tix-vm01 (Ubuntu 24.04 LTS)
+| HTTP (80) ──────────────► ├── Apache2 (web server)
+| ├── PHP (application layer)
+| ├── MySQL (osticket database)
+| └── osTicket (/var/www/html)
 # osTicketLab
 ## Skills Demonstrated
 
