@@ -1,3 +1,5 @@
+<img width="654" height="268" alt="image" src="https://github.com/user-attachments/assets/b676675c-a7c7-48a1-afaa-2954b7df78ae" />
+
 # osTicket Help Desk Ticketing System — Azure Homelab
 
 Self-hosted help desk system, built on an Ubuntu VM in Azure and configured the way a small support team would actually run it — not just installed, but set up with departments, SLAs, and real ticket handling.
