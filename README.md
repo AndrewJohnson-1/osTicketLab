@@ -29,40 +29,33 @@ The point was to see both halves of the tool: what it takes to stand it up and l
 ## Skills Demonstrated
 
 - Linux server administration (Ubuntu) via SSH — package management, file permissions, service management
-- Building a full LAMP stack (Linux, Apache, MySQL, PHP) from a bare VM
-- Secure MySQL setup: dedicated least-privilege database user rather than root/admin credentials
-- Deploying and hardening a real web application (removing the setup installer, locking down config file permissions post-install)
-- Help desk platform administration: agents, teams/groups, departments, help topic routing
-- Service Level Agreement (SLA) configuration and understanding of response/resolution targets
-- End-to-end ticket lifecycle management from both the requester and agent perspective
-- Azure fundamentals: resource groups, VM provisioning, inbound port/firewall rules, cost control (deallocating/deleting resources when finished)
+- Building a LAMP stack (Linux, Apache, MySQL, PHP) from a bare VM
+- Secure MySQL setup: a dedicated, least-privilege database user instead of root
+- Deploying and hardening a real web application — removing the setup installer, locking config file permissions back down after install
+- Help desk platform administration: agents, teams, departments, help topic routing
+- SLA configuration and what a response/resolution target actually means in practice
+- Ticket lifecycle management, start to finish, from both the requester and agent side
+- Azure fundamentals: resource groups, VM provisioning, inbound port rules, cost control (deallocating/deleting resources when done)
 
 ## Build Process
 
-1. **Provisioned the VM** — Created `rg-osticket-lab` and deployed `tix-vm01` (Ubuntu Server 24.04 LTS, Standard_D2s) with inbound rules for SSH (22) and HTTP (80).
-
-2. **Installed the LAMP stack** — Updated packages, then installed Apache2, MySQL, and PHP with the extensions osTicket requires; ran `mysql_secure_installation` to harden the database server.
-3. **Created the database** — Created the `osticket` database and a dedicated `osticketuser` account scoped only to that database (`GRANT ALL PRIVILEGES ON osticket.*`), rather than using root for the application.
-4. **Deployed osTicket** — Downloaded the latest release, copied the application files into Apache's web root (`/var/www/html`), created `ost-config.php` from the sample config, and set correct `www-data` ownership/permissions.
-5. **Ran the web installer** — Completed the `/setup/` wizard in-browser: helpdesk name and system email, admin account, and database connection settings.
+1. **Provisioned the VM.** Created `rg-osticket-lab` and deployed `tix-vm01` — Ubuntu Server 24.04 LTS, Standard_B2s — with SSH (22) and HTTP (80) opened on the network security group.
+2. **Built the LAMP stack.** Updated packages, then installed Apache2, MySQL, and PHP with the extensions osTicket needs. Ran `mysql_secure_installation` before touching anything else.
+3. **Created the database and a dedicated user.** `osticket` database, `osticketuser` scoped to it with `GRANT ALL PRIVILEGES ON osticket.*` — not root, so a compromised app account still can't touch anything outside its own database.
+4. **Deployed osTicket.** Downloaded the latest release, copied it into `/var/www/html`, built `ost-config.php` from the sample file, and set `www-data` ownership so Apache could actually serve it.
+5. **Ran the web installer.** Helpdesk name, system email, admin account, database connection — filled in through the `/setup/` wizard in a browser.
 <img width="2880" height="1800" alt="image" src="https://github.com/user-attachments/assets/d19e584d-815a-4bc7-ae99-920765c53606" />
 
-6. **Locked down the install** — Deleted the `/setup/` directory and reset `ost-config.php` back to read-only permissions once installation succeeded, closing the post-install security gap.
+6. **Locked the install down.** Deleted `/setup/` and reset `ost-config.php` back to 0644 the moment the installer finished, since leaving either one in place is the real security hole.
 <img width="1204" height="174" alt="image" src="https://github.com/user-attachments/assets/20ab3da4-9e1c-4eca-8130-340bb8625a4d" />
 
-7. **Configured the help desk** — Built out the operational structure through the staff control panel (`/scp/`):
-   - 2–3 agent accounts representing support staff
-   - A support team with agents assigned to it
-   - Multiple departments (e.g., IT Support, Facilities) to route requests by function
-   - Multiple help topics (e.g., Password Reset, Hardware Issue, Software Install Request), each routed to the correct department
-   - An SLA plan (response/resolution targets) assigned to a help topic
-
+7. **Set up the help desk like a real team would run one**, through the `/scp/` staff panel: a couple of agent accounts, a support team, two departments (IT Support, Facilities), three help topics routed to the right department, and an SLA plan attached to one of them.
 <img width="2880" height="1800" alt="image" src="https://github.com/user-attachments/assets/ed2a3b03-a0ee-4360-93b0-65bef7578bd8" />
 <img width="2880" height="1800" alt="image" src="https://github.com/user-attachments/assets/d93fccc8-ddab-42f7-bf1f-e8720acabacf" />
 <img width="2880" height="1800" alt="image" src="https://github.com/user-attachments/assets/01dcbbe6-e770-426e-8e4b-1657e249458e" />
 
 
-8. **Validated the system end-to-end** — Submitted sample tickets from the public-facing portal using different help topics and priority levels, then worked them from the staff panel: assigned to an agent, added internal notes, replied to the requester, and moved each through Open → In Progress → Resolved/Closed. One ticket was deliberately left past its SLA target to see a breach from the agent's side.
+8. **Worked it like a queue.** Submitted tickets from the public portal with different topics and priorities, then handled them from the staff side — assigned, internal notes, replies, moved through Open → In Progress → Resolved/Closed. Left one sitting past its SLA on purpose to see what a breach actually looks like from the agent's seat.
 <img width="2880" height="1800" alt="image" src="https://github.com/user-attachments/assets/564530bc-f50d-4434-9a34-b5b611910c5a" />
 <img width="2846" height="4620" alt="image" src="https://github.com/user-attachments/assets/edf0bf37-325e-4021-ad92-0a9430ed247f" />
 
@@ -70,22 +63,22 @@ The point was to see both halves of the tool: what it takes to stand it up and l
 ## What Was Configured
 
 - **Agents:** Multiple support staff accounts
-- **Teams:** At least one support team with agents assigned
-- **Departments:** Multiple departments reflecting how requests would be split up in a real organization
-- **Help Topics:** Multiple topics, each routed to the correct department
-- **SLA Plan:** One plan defining response and resolution targets, assigned to a help topic
-- **Tickets:** Multiple sample tickets submitted and carried through the full lifecycle (new → assigned → in progress → resolved/closed), including one intentional SLA breach scenario
+- **Teams:** One support team with agents assigned
+- **Departments:** IT Support and Facilities
+- **Help Topics:** Multiple topics, each routed to a department
+- **SLA Plan:** Response and resolution targets, assigned to a help topic
+- **Tickets:** Several sample tickets carried through the full lifecycle, including one intentional SLA breach
 
 ## Security Notes
 
-- The application database uses a dedicated, least-privilege MySQL user rather than the root account.
-- The `/setup/` installer directory was removed immediately after installation to prevent reinstallation by an outside party.
-- The configuration file's write permissions were reverted to read-only once setup completed.
-- SSH and HTTP are the only inbound ports opened on the VM's network security group.
+- The application connects to MySQL with a dedicated, least-privilege user — not root.
+- `/setup/` was deleted right after installation so it couldn't be used to reinstall over the live system.
+- `ost-config.php` went back to read-only permissions once setup finished.
+- SSH and HTTP are the only inbound ports open on the VM.
 
 ## Cleanup
 
-The VM was stopped ("Stopped (deallocated)") in the Azure Portal when not actively in use, and the `rg-osticket-lab` resource group is deleted once the project is fully documented, to ensure the lab stops billing entirely.
+Stopped `tix-vm01` ("Stopped (deallocated)") in the Azure Portal whenever it wasn't actively in use, and deleted `rg-osticket-lab` once this was documented, so nothing kept billing in the background.
 
 ## Related Projects
 
