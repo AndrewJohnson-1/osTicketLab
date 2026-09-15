@@ -1,12 +1,12 @@
-# osTicket Help Desk Lab
+# osTicket Help Desk Ticketing System — Azure Homelab
 
-A self-hosted help desk ticketing system built from scratch on a Linux VM in Microsoft Azure, configured and operated the way a small IT support team would use it in production — from server build to live ticket handling.
+Self-hosted help desk system, built on an Ubuntu VM in Azure and configured the way a small support team would actually run it — not just installed, but set up with departments, SLAs, and real ticket handling.
 
 ## Overview
 
-This project stands up [osTicket](https://osticket.com/), an open-source help desk platform, on an Ubuntu Server VM and configures it end-to-end: agents, teams, departments, routed help topics, and an SLA plan. Sample tickets were then submitted through the public portal and worked through their full lifecycle (assigned → replied to → resolved/closed) to validate the setup from both the requester side and the agent side.
+This project installs [osTicket](https://osticket.com/) on an Ubuntu Server VM and sets it up the way a real support team would: agents, a team, departments, help topics routed to the right department, and an SLA plan. After that, sample tickets went through the public portal and got worked from the staff side — assigned, replied to, and moved through Open, In Progress, and Resolved/Closed.
 
-The goal was to build hands-on experience with the exact tool support teams use daily to track and resolve requests like password resets and hardware issues — and to understand both how to administer it and how to work a queue as an agent.
+The point was to see both halves of the tool: what it takes to stand it up and lock it down, and what it's actually like to work a ticket queue as an agent.
 
 ## Environment
 
@@ -14,7 +14,7 @@ The goal was to build hands-on experience with the exact tool support teams use 
 |---|---|
 | Cloud platform | Microsoft Azure |
 | Resource group | `rg-osticket-lab` |
-| VM | `tix-vm01` — Standard_D2s |
+| VM | `tix-vm01` — Standard_B2s |
 | OS | Ubuntu Server 24.04 LTS |
 | Web server | Apache2 |
 | Database | MySQL |
