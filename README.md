@@ -1,4 +1,4 @@
-# osTicket Help Desk
+# osTicket Help Desk Lab
 
 A self-hosted help desk ticketing system built from scratch on a Linux VM in Microsoft Azure, configured and operated the way a small IT support team would use it in production — from server build to live ticket handling.
 
